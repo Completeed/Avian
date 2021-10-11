@@ -139,6 +139,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1572480000; // Oct 31, 2019
 
 
+        // x16rt switch
+        consensus.nX16rtTimestamp = 999999999;
+
 
          // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000002");
@@ -263,6 +266,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1538351999; // GMT: Sunday, September 30, 2018 11:59:59 PM
 
 
+        // testnet x16rt switch
+        consensus.nX16rtTimestamp = 999999999;
+
+
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000002");
 
@@ -373,6 +380,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 999999999999ULL;
 
+
+        // regtest x16rt switch (genesis +1)
+        consensus.nX16rtTimestamp = 1629951212;
 
 
         // The best chain should have at least this much work.
