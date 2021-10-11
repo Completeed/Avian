@@ -30,6 +30,10 @@
 #include "lyra2.h"
 #include "gost_streebog.h"
 
+#include <vector>
+
+class CBlockHeader;
+
 #ifndef QT_NO_DEBUG
 #include <string>
 #endif
@@ -50,6 +54,7 @@ inline int GetHashSelection(const uint256 PrevBlockHash, int index) {
     return(hashSelection);
 }
 
+//x16r
 template<typename T1>
 inline uint256 HashX16R(const T1 pbegin, const T1 pend, const uint256 PrevBlockHash)
 {
@@ -180,6 +185,7 @@ inline uint256 HashX16R(const T1 pbegin, const T1 pend, const uint256 PrevBlockH
     return hash[15].trim256();
 }
 
+//x16rv2
 template<typename T1>
 inline uint256 HashX16RV2(const T1 pbegin, const T1 pend, const uint256 PrevBlockHash)
 {
