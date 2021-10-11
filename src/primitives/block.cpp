@@ -12,7 +12,11 @@
 #include "utilstrencodings.h"
 #include "crypto/common.h"
 
+#include "hash.h"
+#include "consensus/consensus.h"
+#include "chainparams.h"
 
+#define TIME_MASK 0xffffff80
 
 BlockNetwork bNetwork = BlockNetwork();
 
@@ -33,8 +37,19 @@ void BlockNetwork::SetNetwork(const std::string& net)
 
 uint256 CBlockHeader::GetHash() const
 {
+    uint256 thash;
+    unsigned int profile = 0x0;
 
-    return HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
+    if (nTime > Params().GetConsensus().nX16rtTimestamp) {
+        //x16rt
+        int32_t nTimeX16r = nTime&TIME_MASK;
+        uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));
+        thash = HashX16R(BEGIN(nVersion), END(nNonce), hashTime);
+    else {
+        thash = HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
+    }
+
+    return thash;
 }
 
 uint256 CBlockHeader::GetX16RHash() const
