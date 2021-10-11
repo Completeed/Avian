@@ -37,7 +37,6 @@
 #include "algo/lyra2.h"
 #include "algo/gost_streebog.h"
 
-#include <crypto/ethash/helpers.hpp>
 #include <vector>
 
 class CBlockHeader;
