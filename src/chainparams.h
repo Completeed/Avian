@@ -12,6 +12,7 @@
 #include "primitives/block.h"
 #include "protocol.h"
 
+#include <cstdint>
 #include <memory>
 #include <vector>
 
@@ -165,6 +166,11 @@ std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain);
  * startup, except for unit tests.
  */
 const CChainParams &Params();
+
+/**
+ * Returns x16rt timestamp
+ */
+const uint32_t GetX16rtTimestamp();
 
 /**
  * Sets the params returned by Params() to those for the given BIP70 chain name.

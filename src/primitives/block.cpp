@@ -6,7 +6,7 @@
 
 #include "versionbits.h"
 
-#include "../chainparams.h"
+#include "chainparams.h"
 
 #include "primitives/block.h"
 
@@ -41,7 +41,7 @@ uint256 CBlockHeader::GetHash() const
     uint256 thash;
     unsigned int profile = 0x0;
 
-    if (nTime > Params().GetConsensus().nX16rtTimestamp) {
+    if (nTime > GetX16rtTimestamp()) {
         //x16rt
         int32_t nTimeX16r = nTime&TIME_MASK;
         uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));

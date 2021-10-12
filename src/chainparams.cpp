@@ -521,6 +521,10 @@ const CChainParams &Params() {
     return *globalChainParams;
 }
 
+const uint32_t GetX16rtTimestamp() {
+    return globalChainParams->GetConsensus().nX16rtTimestamp;
+}
+
 std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain)
 {
     if (chain == CBaseChainParams::MAIN)
