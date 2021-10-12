@@ -122,12 +122,12 @@ unsigned int GetNextWorkRequiredBTC(const CBlockIndex* pindexLast, const CBlockH
     return CalculateNextWorkRequired(pindexLast, pindexFirst->GetBlockTime(), params);
 }
 
-bool IsTransitioningToX16rt(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
+bool IsTransitioningToX16rt(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::ConsensusParams& params)
 {
     if (pblock->nTime <= params.nX16rtTimestamp)
         return false;
         
-    int64_t dgwWindow = params.GetDGWPastBlocks(pindexLast->nHeight);
+    int64_t dgwWindow = 0; // RVL does not have DGWPastBlocks so no need to check.
     const CBlockIndex* pindex = pindexLast;
     
     while (pindex->pprev && dgwWindow > 0) {
