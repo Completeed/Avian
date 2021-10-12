@@ -12,7 +12,7 @@
 #include "utilstrencodings.h"
 #include "crypto/common.h"
 
-#include "algo/hash_algos.h"
+#include "hash.h"
 #include "consensus/consensus.h"
 #include "chainparams.h"
 
@@ -45,6 +45,7 @@ uint256 CBlockHeader::GetHash() const
         int32_t nTimeX16r = nTime&TIME_MASK;
         uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));
         thash = HashX16R(BEGIN(nVersion), END(nNonce), hashTime);
+    }
     else {
         thash = HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
     }
