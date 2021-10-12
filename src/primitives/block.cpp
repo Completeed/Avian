@@ -6,8 +6,7 @@
 
 #include "versionbits.h"
 
-#include "chainparams.h"
-#include "consensus/params.h"
+#include "../chainparams.h"
 
 #include "primitives/block.h"
 
