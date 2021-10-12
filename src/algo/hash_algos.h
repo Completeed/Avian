@@ -8,7 +8,6 @@
 
 
 #include "../uint256.h"
-#include "sha256.h"
 #include "sph_blake.h"
 #include "sph_bmw.h"
 #include "sph_groestl.h"
