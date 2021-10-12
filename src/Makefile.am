@@ -348,6 +348,8 @@ libraven_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
+  chainparams.cpp \
+  chainparams.h \
   hash.cpp \
   hash.h \
   prevector.h \
@@ -372,9 +374,7 @@ libraven_consensus_a_SOURCES = \
   uint256.h \
   utilstrencodings.cpp \
   utilstrencodings.h \
-  version.h \
-  block.cpp \
-  block.h 
+  version.h
   $(RAVEN_CORE_H)
 
 # common: shared between ravend, and raven-qt and non-server tools
