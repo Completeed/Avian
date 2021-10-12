@@ -39,7 +39,7 @@ uint256 CBlockHeader::GetHash() const
     uint256 thash;
     unsigned int profile = 0x0;
 
-    if (nTime > ConsensusParams().GetConsensus().nX16rtTimestamp) {
+    if (nTime > Params().GetConsensus().nX16rtTimestamp) {
         //x16rt
         int32_t nTimeX16r = nTime&TIME_MASK;
         uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));
