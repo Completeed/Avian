@@ -373,6 +373,8 @@ libraven_consensus_a_SOURCES = \
   utilstrencodings.cpp \
   utilstrencodings.h \
   version.h \
+  block.cpp \
+  block.h 
   $(RAVEN_CORE_H)
 
 # common: shared between ravend, and raven-qt and non-server tools
