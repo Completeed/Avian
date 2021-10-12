@@ -5,6 +5,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "versionbits.h"
+
+#include "chainparams.h"
+#include "consensus/params.h"
+
 #include "primitives/block.h"
 
 #include "algo/hash_algos.h"
@@ -13,7 +17,6 @@
 #include "crypto/common.h"
 
 #include "consensus/consensus.h"
-#include "chainparams.h"
 
 #define TIME_MASK 0xffffff80
 
