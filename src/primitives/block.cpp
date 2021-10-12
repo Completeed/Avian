@@ -12,7 +12,7 @@
 #include "utilstrencodings.h"
 #include "crypto/common.h"
 
-#include "hash_algos.h"
+#include "algo/hash_algos.h"
 #include "consensus/consensus.h"
 #include "chainparams.h"
 
