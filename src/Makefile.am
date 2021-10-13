@@ -227,8 +227,8 @@ RAVEN_CORE_H = \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
-  zmq/zmqpublishnotifier.h
-
+  zmq/zmqpublishnotifier.h \
+  primitives/block.h \
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
@@ -348,8 +348,6 @@ libraven_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
-  chainparams.cpp \
-  chainparams.h \
   hash.cpp \
   hash.h \
   prevector.h \
@@ -421,6 +419,7 @@ libraven_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
+  primitives/block.cpp \
   $(RAVEN_CORE_H)
 
 if GLIBC_BACK_COMPAT

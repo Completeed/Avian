@@ -140,8 +140,7 @@ public:
 
 
         // x16rt switch
-        consensus.nX16rtTimestamp = 1634069642; // Oct 12, 2021 
-
+        consensus.nX16rtTimestamp = 9999999999;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000002");
@@ -265,8 +264,7 @@ public:
 
 
         // testnet x16rt switch
-        consensus.nX16rtTimestamp = 1634069642; // Oct 12, 2021 
-
+        consensus.nX16rtTimestamp = 1634101200; // Oct 13, 2021 
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000002");
