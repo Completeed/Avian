@@ -48,9 +48,9 @@ uint256 CBlockHeader::GetHash() const
     unsigned int profile = 0x0;
     uint32_t nTimeToUse = MAINNET_X16RT_ACTIVATIONTIME;
 
-    if (fOnTestnet)
+    if (bNetwork.fOnTestnet)
         nTimeToUse = TESTNET_X16RT_ACTIVATIONTIME;
-    else if (fOnRegtest)
+    else if (bNetwork.fOnRegtest)
         nTimeToUse = REGTEST_X16RT_ACTIVATIONTIME;
     else
         nTimeToUse = MAINNET_X16RT_ACTIVATIONTIME;
