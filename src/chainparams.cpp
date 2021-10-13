@@ -376,10 +376,8 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 999999999999ULL;
 
-
         // regtest x16rt switch (genesis +1)
         consensus.nX16rtTimestamp = 1629951212;
-
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");

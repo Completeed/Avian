@@ -228,7 +228,6 @@ RAVEN_CORE_H = \
   zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h \
-  primitives/block.h
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
@@ -419,7 +418,6 @@ libraven_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  primitives/block.cpp \
   $(RAVEN_CORE_H)
 
 if GLIBC_BACK_COMPAT
