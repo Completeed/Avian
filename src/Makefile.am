@@ -228,7 +228,7 @@ RAVEN_CORE_H = \
   zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h \
-  primitives/block.h \
+  primitives/block.h
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
