@@ -374,7 +374,7 @@ libraven_consensus_a_SOURCES = \
   uint256.h \
   utilstrencodings.cpp \
   utilstrencodings.h \
-  version.h
+  version.h \
   $(RAVEN_CORE_H)
 
 # common: shared between ravend, and raven-qt and non-server tools
