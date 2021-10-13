@@ -140,7 +140,7 @@ public:
 
 
         // x16rt switch
-        consensus.nX16rtTimestamp = 9999999999;
+        consensus.nX16rtTimestamp = 2000000000;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000002");
