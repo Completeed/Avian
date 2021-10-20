@@ -2091,6 +2091,10 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
     LOCK(cs_main);
     int32_t nVersion = VERSIONBITS_TOP_BITS;
 
+    // Crow: Set bit 29 to 0
+    if (IsCrowEnabled(pindexPrev, params))
+        nVersion = 0;
+
     /** If the assets are deployed now. We need to use the correct block version */
     if (AreAssetsDeployed())
         nVersion = VERSIONBITS_TOP_BITS_ASSETS;
@@ -2126,9 +2130,15 @@ public:
 
     bool Condition(const CBlockIndex* pindex, const Consensus::ConsensusParams& params) const override
     {
-        return ((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) &&
-               ((pindex->nVersion >> bit) & 1) != 0 &&
-               ((ComputeBlockVersion(pindex->pprev, params) >> bit) & 1) == 0;
+        // Crow: Versionbits always active since powforktime and high bits repurposed at crow UASF activation;
+        // So, don't use VERSIONBITS_TOP_MASK any time past powforktime
+        if (pindex->nTime > params.powForkTime)
+            return ((pindex->nVersion >> bit) & 1) != 0 &&
+                ((ComputeBlockVersion(pindex->pprev, params) >> bit) & 1) == 0;
+        else
+            return ((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) &&
+                ((pindex->nVersion >> bit) & 1) != 0 &&
+                ((ComputeBlockVersion(pindex->pprev, params) >> bit) & 1) == 0;
     }
 };
 
@@ -2917,8 +2927,14 @@ void static UpdateTip(CBlockIndex *pindexNew, const CChainParams& chainParams) {
         for (int i = 0; i < 100 && pindex != nullptr; i++)
         {
             int32_t nExpectedVersion = ComputeBlockVersion(pindex->pprev, chainParams.GetConsensus());
-            if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion) != 0)
-                ++nUpgraded;
+            // Crow: Mask out blocktype before checking for possible unknown upgrade
+            if (IsCrowEnabled(pindex, chainParams.GetConsensus())) {
+                if (pindex->nVersion & 0xFF00FFFF != nExpectedVersion && !pindex->GetBlockHeader().IsHiveMined(chainParams.GetConsensus()))
+                    ++nUpgraded;
+            } else {
+                if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion) != 0))
+                    ++nUpgraded;
+            }
             pindex = pindex->pprev;
         }
         if (nUpgraded > 0)
@@ -3001,6 +3017,13 @@ bool static DisconnectTip(CValidationState& state, const CChainParams& chainpara
     // 0-confirmed or conflicted:
     GetMainSignals().BlockDisconnected(pblock);
     return true;
+}
+
+// Crow: Check if Crow Algo is activated at given point
+bool IsCrowEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
+{
+    LOCK(cs_main);
+    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_MINOTAURX, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
 static int64_t nTimeReadFromDisk = 0;
@@ -3900,8 +3923,19 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
 
     // Check proof of work
     const Consensus::ConsensusParams& consensusParams = params.GetConsensus();
-    if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
+     // Crow: Handle pow type
+        if (IsCrowEnabled(pindexPrev, consensusParams)) {
+            POW_TYPE powType = block.GetPoWType();
+
+            if (powType >= NUM_BLOCK_TYPES)
+                return state.DoS(100, false, REJECT_INVALID, "bad-algo-id", false, "unrecognised pow type in block version");
+
+            if (block.nBits != GetNextWorkRequiredLWMA(pindexPrev, &block, consensusParams, powType))
+                return state.DoS(100, false, REJECT_INVALID, "bad-diff", false, "incorrect pow difficulty in for block type");
+
+    } else if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)) {
         return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+    }
 
     // Check against checkpoints
     if (fCheckpointsEnabled) {
@@ -3920,12 +3954,14 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
     // Check timestamp
     if (IsDGWActive(pindexPrev->nHeight+1))
     {
-        if (block.GetBlockTime() > nAdjustedTime + MAX_FUTURE_BLOCK_TIME_DGW)
+        int64_t max_future_block_time = IsCrowEnabled(pindexPrev, consensusParams) ? MAX_FUTURE_BLOCK_TIME_CROW : MAX_FUTURE_BLOCK_TIME_DGW;
+        if (block.GetBlockTime() > nAdjustedTime + max_future_block_time)
             return state.Invalid(false, REJECT_INVALID, "time-too-new", "block timestamp too far in the future");
     }
     else
     {
-        if (block.GetBlockTime() > nAdjustedTime + MAX_FUTURE_BLOCK_TIME)
+        int64_t max_future_block_time = IsCrowEnabled(pindexPrev, consensusParams) ? MAX_FUTURE_BLOCK_TIME_CROW : MAX_FUTURE_BLOCK_TIME;
+        if (block.GetBlockTime() > nAdjustedTime + max_future_block_time)
             return state.Invalid(false, REJECT_INVALID, "time-too-new", "block timestamp too far in the future");
     }
 
@@ -3940,6 +3976,20 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
     // Reject outdated veresion blocks onces assets are active.
     if (AreAssetsDeployed() && block.nVersion < VERSIONBITS_TOP_BITS_ASSETS)
         return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion), strprintf("rejected nVersion=0x%08x block", block.nVersion));
+
+    // Crow: Handle nVersion differently after activation
+    if (!IsCrowEnabled(pindexPrev,consensusParams)) {
+        // nothing to do
+    } else {
+        // Top 8 bits must be zero
+        if (block.nVersion & 0xFF000000)
+            return state.Invalid(false, REJECT_OBSOLETE, strprintf("old-versionbits(0x%08x)", block.nVersion), strprintf("rejected nVersion=0x%08x block (old versionbits)", block.nVersion));
+
+        // Blocktype must be valid
+        uint8_t blockType = (block.nVersion >> 16) & 0xFF;
+        if (blockType >= NUM_BLOCK_TYPES)
+            return state.Invalid(false, REJECT_INVALID, "bad-blocktype", strprintf("unrecognised blocktype of =0x%08x", blockType));
+    }
 
     return true;
 }

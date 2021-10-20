@@ -118,7 +118,8 @@ void BlockAssembler::resetBlock()
     nFees = 0;
 }
 
-std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn, bool fMineWitnessTx)
+// Crow: Accept POW_TYPE arg
+std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn, bool fMineWitnessTx, const POW_TYPE powType)
 {
     int64_t nTimeStart = GetTimeMicros();
 
@@ -141,6 +142,18 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     nHeight = pindexPrev->nHeight + 1;
 
     pblock->nVersion = ComputeBlockVersion(pindexPrev, chainparams.GetConsensus());
+
+    // Crow: Refuse to attempt to create a non-x16r block before activation
+    if (!IsCrowEnabled(pindexPrev, chainparams.GetConsensus()) && powType != 0)
+        throw std::runtime_error("Error: Won't attempt to create a non-x16r block before Crow activation");
+
+    // Crow: If Crow Algo is enabled, encode desired pow type.
+    if (IsCrowEnabled(pindexPrev, chainparams.GetConsensus())) {
+        if (powType >= NUM_BLOCK_TYPES)
+            throw std::runtime_error("Error: Unrecognised pow type requested");
+        pblock->nVersion |= powType << 16;
+    }
+
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios
     if (chainparams.MineBlocksOnDemand())
@@ -187,7 +200,14 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
     UpdateTime(pblock, chainparams.GetConsensus(), pindexPrev);
-    pblock->nBits          = GetNextWorkRequired(pindexPrev, pblock, chainparams.GetConsensus());
+
+
+    if (IsCrowEnabled(pindexPrev, chainparams.GetConsensus())) {
+        pblock->nBits = GetNextWorkRequiredLWMA(pindexPrev, pblock, chainparams.GetConsensus(), powType);
+    } else {
+        pblock->nBits = GetNextWorkRequired(pindexPrev, pblock, chainparams.GetConsensus());
+    }
+
     pblock->nNonce         = 0;
     pblocktemplate->vTxSigOpsCost[0] = WITNESS_SCALE_FACTOR * GetLegacySigOpCount(*pblock->vtx[0]);
 

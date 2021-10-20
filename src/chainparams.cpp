@@ -138,6 +138,16 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 1540944000; // Oct 31, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1572480000; // Oct 31, 2019
 
+        // Crow Algo Deployment
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].bit = 7;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = 2208988800;  // Jan 1, 2040
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nTimeout = 2208988800 + 31536000;  // Start + 1 year
+
+        // Crow Algo consensus
+        consensus.powForkTime = 2208988800;                 // Time of PoW hash method change
+        consensus.lwmaAveragingWindow = 90;                 // Averaging window size for LWMA diff adjust
+        consensus.powTypeLimits.emplace_back(uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // x16rt limit
+        consensus.powTypeLimits.emplace_back(uint256S("0x000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // Crow limit
 
         // x16rt switch
         consensus.nX16rtTimestamp = 2000000000;
@@ -262,6 +272,16 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 1533924000; // GMT: Friday, August 10, 2018 6:00:00 PM
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1538351999; // GMT: Sunday, September 30, 2018 11:59:59 PM
 
+        // Crow Algo Deployment (testnet)
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].bit = 7;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = 2208988800;  // Jan 1, 2040
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nTimeout = 2208988800 + 31536000;  // Start + 1 year
+
+        // Crow Algo consensus
+        consensus.powForkTime = 2208988800;                 // Time of PoW hash method change 
+        consensus.lwmaAveragingWindow = 90;                 // Averaging window size for LWMA diff adjust
+        consensus.powTypeLimits.emplace_back(uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // x16rt limit
+        consensus.powTypeLimits.emplace_back(uint256S("0x000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // Crow limit
 
         // testnet x16rt switch
         consensus.nX16rtTimestamp = 1634101200; // Oct 13, 2021 

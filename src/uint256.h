@@ -128,6 +128,11 @@ public:
     explicit uint256(const std::string& strHex) { SetHex(strHex); }
     explicit uint256(const std::vector<unsigned char>& vch) : base_blob<256>(vch) {}
 
+    // Crow: Truncate a uint512 to a uint256
+    uint256(uint512& dat){
+        memcpy(begin(), dat.begin(), size());
+    }
+
     int GetNibble(int index) const 
     {
         index = 63 - index;
@@ -178,5 +183,9 @@ public:
         memcpy((void*)&result, (void*)data, 32);
         return result;
     }
+    unsigned char ByteAt(unsigned int n) {
+        return data[n];
+    }
 };
+
 #endif // RAVEN_UINT256_H
