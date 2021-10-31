@@ -10,6 +10,7 @@
 #include "primitives/transaction.h"
 #include "serialize.h"
 #include "uint256.h"
+#include <string>
 
 // Crow: An impossible pow hash (can't meet any target)
 const uint256 HIGH_HASH = uint256S("0x0fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -23,7 +24,7 @@ const std::string POW_TYPE_NAMES[] = {
     "crow"
 };
 
-// LitecoinCash: MinotaurX: Pow type IDs
+// Crow: Pow type IDs
 enum POW_TYPE {
     POW_TYPE_X16RT,
     POW_TYPE_CROW,

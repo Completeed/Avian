@@ -80,6 +80,7 @@ uint256 CBlockHeader::GetHash() const
                     break;
                 default:                                                // Don't crash the client on invalid blockType, just return a bad hash
                     return HIGH_HASH;
+            }
         } else {
             // x16rt before dual-algo
             int32_t nTimeX16r = nTime&TIME_MASK;

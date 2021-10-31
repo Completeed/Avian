@@ -1,12 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "uint256.h"
+#include <uint256.h>
 
-#include "utilstrencodings.h"
+#include <utilstrencodings.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -79,7 +78,7 @@ template std::string base_blob<256>::ToString() const;
 template void base_blob<256>::SetHex(const char*);
 template void base_blob<256>::SetHex(const std::string&);
 
-// Crow: Explicit instantiations for base_blob<512>
+// Explicit instantiations for base_blob<512>
 template base_blob<512>::base_blob(const std::vector<unsigned char>&);
 template std::string base_blob<512>::GetHex() const;
 template std::string base_blob<512>::ToString() const;
