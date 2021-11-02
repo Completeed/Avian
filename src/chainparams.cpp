@@ -274,11 +274,11 @@ public:
 
         // Crow Algo Deployment (testnet)
         consensus.vDeployments[Consensus::DEPLOYMENT_CROW].bit = 7;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = 2208988800;  // Jan 1, 2040
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = 1635847608;  // Nov 2, 2021
         consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nTimeout = 2208988800 + 31536000;  // Start + 1 year
 
         // Crow Algo consensus
-        consensus.powForkTime = 2208988800;                 // Time of PoW hash method change 
+        consensus.powForkTime = 1635847608;                 // Time of PoW hash method change 
         consensus.lwmaAveragingWindow = 90;                 // Averaging window size for LWMA diff adjust
         consensus.powTypeLimits.emplace_back(uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // x16rt limit
         consensus.powTypeLimits.emplace_back(uint256S("0x000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));   // Crow limit

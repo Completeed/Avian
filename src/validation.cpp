@@ -13,6 +13,7 @@
 #include "checkqueue.h"
 #include "consensus/consensus.h"
 #include "consensus/merkle.h"
+#include "consensus/params.h"
 #include "consensus/tx_verify.h"
 #include "consensus/validation.h"
 #include "cuckoocache.h"
@@ -2929,11 +2930,12 @@ void static UpdateTip(CBlockIndex *pindexNew, const CChainParams& chainParams) {
             int32_t nExpectedVersion = ComputeBlockVersion(pindex->pprev, chainParams.GetConsensus());
             // Crow: Mask out blocktype before checking for possible unknown upgrade
             if (IsCrowEnabled(pindex, chainParams.GetConsensus())) {
-                if (pindex->nVersion & 0xFF00FFFF != nExpectedVersion && !pindex->GetBlockHeader().IsHiveMined(chainParams.GetConsensus()))
+                if (pindex->nVersion & 0xFF00FFFF != nExpectedVersion)
                     ++nUpgraded;
             } else {
-                if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion) != 0))
+                if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion) != 0){
                     ++nUpgraded;
+                }
             }
             pindex = pindex->pprev;
         }
@@ -3020,10 +3022,10 @@ bool static DisconnectTip(CValidationState& state, const CChainParams& chainpara
 }
 
 // Crow: Check if Crow Algo is activated at given point
-bool IsCrowEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
+bool IsCrowEnabled(const CBlockIndex* pindexPrev, const Consensus::ConsensusParams& params)
 {
     LOCK(cs_main);
-    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_MINOTAURX, versionbitscache) == THRESHOLD_ACTIVE);
+    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_CROW, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
 static int64_t nTimeReadFromDisk = 0;

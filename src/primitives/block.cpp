@@ -11,8 +11,6 @@
 #include "chainparams.h"
 
 #include "algo/crow/crow.h"             // Crow Algo
-#include "validation.h"                 // Crow Algo
-#include "util.h"                       // Crow Algo
 
 #include "primitives/block.h"
 
@@ -30,7 +28,7 @@ static const uint32_t TESTNET_X16RT_ACTIVATIONTIME = 1634101200;
 static const uint32_t REGTEST_X16RT_ACTIVATIONTIME = 1629951212;
 
 static const uint32_t MAINNET_CROW_MULTI_ACTIVATIONTIME = 2208988800;
-static const uint32_t TESTNET_CROW_MULTI_ACTIVATIONTIME = 2208988800;
+static const uint32_t TESTNET_CROW_MULTI_ACTIVATIONTIME = 1635847608;
 
 BlockNetwork bNetwork = BlockNetwork();
 
@@ -69,17 +67,19 @@ uint256 CBlockHeader::GetHash() const
     if (nTime > nTimeToUse) {
         if(nTime > nCrowTimeToUse) {
             // Mutli algo (x16rt + new Crow algo)
-            switch(GetPoWType()){
-                case POW_TYPE_X16RT:
-                    int32_t nTimeX16r = nTime&TIME_MASK;
-                    uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));
-                    thash = HashX16R(BEGIN(nVersion), END(nNonce), hashTime); 
-                    break;
-                case POW_TYPE_CROW:
-                    return Crow(BEGIN(nVersion), END(nNonce), true);
-                    break;
-                default:                                                // Don't crash the client on invalid blockType, just return a bad hash
-                    return HIGH_HASH;
+            switch (GetPoWType()) {
+            case POW_TYPE_X16RT: {
+                int32_t nTimeX16r = nTime & TIME_MASK;
+                uint256 hashTime = Hash(BEGIN(nTimeX16r), END(nTimeX16r));
+                thash = HashX16R(BEGIN(nVersion), END(nNonce), hashTime);
+                break;
+            }
+            case POW_TYPE_CROW: {
+                return Crow(BEGIN(nVersion), END(nNonce), true);
+                break;
+            }
+            default: // Don't crash the client on invalid blockType, just return a bad hash
+                return HIGH_HASH;
             }
         } else {
             // x16rt before dual-algo

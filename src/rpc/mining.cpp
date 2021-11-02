@@ -253,7 +253,7 @@ UniValue getmininginfo(const JSONRPCRequest& request)
     obj.push_back(Pair("currentblocktx",   (uint64_t)nLastBlockTx));
     obj.push_back(Pair("difficulty",       (double)GetDifficulty()));
     if (IsCrowEnabled(chainActive.Tip(), Params().GetConsensus()))
-        obj.push_back(Pair("crowdifficulty", GetDifficulty(nullptr, false, POW_TYPE_CROW)));  
+        obj.push_back(Pair("crowdifficulty", GetDifficulty(nullptr, POW_TYPE_CROW)));  
     obj.push_back(Pair("networkhashps",    getnetworkhashps(request)));
     obj.push_back(Pair("hashespersec",     (uint64_t)nHashesPerSec));
     obj.push_back(Pair("pooledtx",         (uint64_t)mempool.size()));
@@ -416,6 +416,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     UniValue lpval = NullUniValue;
     std::set<std::string> setClientRules;
     int64_t nMaxVersionPreVB = -1;
+    std::string strAlgo = gArgs.GetArg("-powalgo", DEFAULT_POW_TYPE);
     if (!request.params[0].isNull())
     {
         const UniValue& oparam = request.params[0].get_obj();
@@ -581,7 +582,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
 
         // Create new block
         CScript scriptDummy = CScript() << OP_TRUE;
-        pblocktemplate = BlockAssembler(Params()).CreateNewBlock(scriptDummy, fSupportsSegwit, nullptr, powType);   // Crow: Include powType
+        pblocktemplate = BlockAssembler(Params()).CreateNewBlock(scriptDummy, fSupportsSegwit, powType);   // Crow: Include powType
         lastPowType = powType;   // Crow: Cache pow type just requested        
         if (!pblocktemplate)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");

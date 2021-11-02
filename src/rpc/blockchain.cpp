@@ -58,7 +58,7 @@ extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& 
  * or the block index of the given chain.
  */
 // Crow: Add powType param
-double GetDifficulty(const CChain& chain, const CBlockIndex* blockindex, POW_TYPE powType = POW_TYPE_SHA256)
+double GetDifficulty(const CChain& chain, const CBlockIndex* blockindex, POW_TYPE powType = POW_TYPE_X16RT)
 {
     if (blockindex == nullptr)
     {
@@ -100,10 +100,10 @@ double GetDifficulty(const CChain& chain, const CBlockIndex* blockindex, POW_TYP
     return dDiff;
 }
 
-// Crow: Pass through optional getHiveDifficulty param
-double GetDifficulty(const CBlockIndex* blockindex, bool getHiveDifficulty, POW_TYPE powType)
+// Crow
+double GetDifficulty(const CBlockIndex* blockindex, POW_TYPE powType)
 {
-    return GetDifficulty(chainActive, blockindex, getHiveDifficulty, powType);
+    return GetDifficulty(chainActive, blockindex, powType);
 }
 
 
@@ -261,7 +261,7 @@ UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
     result.push_back(Pair("nonce", (uint64_t)block.nNonce));
     result.push_back(Pair("bits", strprintf("%08x", block.nBits)));
     result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
-    if (IsCrowEnabled(blockindex, consensusParams))
+    if (IsCrowEnabled(blockindex, Params().GetConsensus()))
         result.push_back(Pair("crowdifficulty", GetDifficulty(blockindex))); 
     result.push_back(Pair("chainwork", blockindex->nChainWork.GetHex()));
 
@@ -518,11 +518,11 @@ UniValue getdifficulty(const JSONRPCRequest& request)
     if (!algoFound)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid pow algorithm requested");
 
-    if (!IsMinotaurXEnabled(chainActive.Tip(), Params().GetConsensus()) && powType != POW_TYPE_SHA256)
+    if (!IsCrowEnabled(chainActive.Tip(), Params().GetConsensus()) && powType != POW_TYPE_X16RT)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Non x16rt algo requested but Crow not enabled");
 
     LOCK(cs_main);
-    return GetDifficulty(nullptr, false, powType);
+    return GetDifficulty(nullptr, powType);
 }
 
 std::string EntryDescriptionString()
@@ -944,7 +944,7 @@ UniValue getblockheader(const JSONRPCRequest& request)
             "  \"bits\" : \"1d00ffff\", (string) The bits\n"
             "  \"difficulty\" : x.xxx,  (numeric) The difficulty for x16rt\n"
             "  \"crowdifficulty\" : x.xxx,  (numeric) The pow difficulty for Crow (once activated)\n" // Crow
-            "  \"nTx\", : \"x\",        (string) The number of transactions in the block"\n,
+            "  \"nTx\", : \"x\",        (string) The number of transactions in the block\n"
             "  \"chainwork\" : \"0000...1f3\"     (string) Expected number of hashes required to produce the current chain (in hex)\n"
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\",      (string) The hash of the next block\n"
@@ -1017,7 +1017,7 @@ UniValue getblock(const JSONRPCRequest& request)
             "  \"difficulty\" : x.xxx,  (numeric) The difficulty for x16rt\n"
             "  \"crowdifficulty\" : x.xxx,  (numeric) The pow difficulty for Crow (once activated)\n" // Crow            
             "  \"chainwork\" : \"xxxx\",  (string) Expected number of hashes required to produce the chain up to this block (in hex)\n"
-            "  \"nTx\", : \"x\",        (string) The number of transactions in the block"\n,
+            "  \"nTx\", : \"x\",        (string) The number of transactions in the block\n"
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "}\n"
@@ -1478,7 +1478,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)
     obj.push_back(Pair("bestblockhash",         chainActive.Tip()->GetBlockHash().GetHex()));
     obj.push_back(Pair("difficulty",            (double)GetDifficulty()));
     if (IsCrowEnabled(chainActive.Tip(), Params().GetConsensus()))
-        obj.push_back(Pair("crowdifficulty", GetDifficulty(nullptr, false, POW_TYPE_CROW)));
+        obj.push_back(Pair("crowdifficulty", GetDifficulty(nullptr, POW_TYPE_CROW)));
     if (IsDGWActive(chainActive.Height())) {
         obj.push_back(Pair("difficulty_algorithm", "DGW-180"));
     } else {

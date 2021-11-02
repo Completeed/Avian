@@ -16,7 +16,7 @@
 const uint256 HIGH_HASH = uint256S("0x0fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
 // Crow: Default value for -powalgo argument
-const std::string DEFAULT_POW_TYPE = "crow";
+const std::string DEFAULT_POW_TYPE = "x16rt";
 
 // Crow: Pow type names
 const std::string POW_TYPE_NAMES[] = {

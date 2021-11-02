@@ -126,36 +126,9 @@ RAVEN_CORE_H = \
   algo/sponge.cpp \
   algo/sph_sha2.c \
   algo/gost_streebog.c \
-  algo/crow/sph_blake.h \
-  algo/crow/sph_cubehash.h \
-  algo/crow/sph_echo.h \
-  algo/crow/sph_fugue.h \
-  algo/crow/sph_groestl.h \
-  algo/crow/sph_hamsi.h \
-  algo/crow/sph_haval.h \
-  algo/crow/sph_jh.h \
-  algo/crow/sph_keccak.h \
-  algo/crow/sph_luffa.h \
-  algo/crow/sph_sha2.h \
-  algo/crow/sph_sha2big.c \
-  algo/crow/sph_shabal.h \
-  algo/crow/sph_shavite.h \
-  algo/crow/sph_simd.h \
-  algo/crow/sph_skein.h \
-  algo/crow/sph_types.h \
-  algo/crow/sph_whirlpool.h \
-  algo/crow/bmw.c \
-  algo/crow/whirlpool.c \
-  algo/crow/Sponge.h \
-  algo/crow/blake.c \
   algo/crow/blake2.h \
   algo/crow/blake2-impl.h \
   algo/crow/blake2s-ref.c \
-  algo/crow/cubehash.c \
-  algo/crow/echo.c \
-  algo/crow/fugue.c \
-  algo/crow/groestl.c \
-  algo/crow/hamsi.c \
   algo/crow/hashblake.h \
   algo/crow/hashgroestl.h \
   algo/crow/hashquark.h \
@@ -165,20 +138,6 @@ RAVEN_CORE_H = \
   algo/crow/hashx13.h \
   algo/crow/hashx15.h \
   algo/crow/hashx17.h \
-  algo/crow/haval.c \
-  algo/crow/jh.c \
-  algo/crow/keccak.c \
-  algo/crow/luffa.c \
-  algo/crow/Lyra2.c \
-  algo/crow/Lyra2.h \
-  algo/crow/Lyra2RE.c \
-  algo/crow/Lyra2RE.h \
-  algo/crow/shabal.c \
-  algo/crow/shavite.c \
-  algo/crow/simd.c \
-  algo/crow/skein.c \
-  algo/crow/Sponge.c \
-  algo/crow/sph_bmw.h \
   algo/crow/crow.h \
   algo/crow/yespower/yespower.c \
   algo/crow/yespower/crypto/sha256.c \

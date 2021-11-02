@@ -7,12 +7,12 @@
 #define RING_CRYPTO_POW_HASHQUARK_H
 
 #include <uint256.h>
-#include <sph_blake.h>
-#include <sph_bmw.h>
-#include <sph_groestl.h>
-#include <sph_jh.h>
-#include <sph_keccak.h>
-#include <sph_skein.h>
+#include "../sph_blake.h"
+#include "../sph_bmw.h"
+#include "../sph_groestl.h"
+#include "../sph_jh.h"
+#include "../sph_keccak.h"
+#include "../sph_skein.h"
 
 template<typename T1>
 inline uint256 HashQuark(const T1 pbegin, const T1 pend)

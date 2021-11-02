@@ -8,7 +8,7 @@
 
 #include <uint256.h>
 #include <serialize.h>
-#include <sph_skein.h>
+#include "../sph_skein.h"
 
 #include <openssl/sha.h>
 #include <openssl/ripemd.h>

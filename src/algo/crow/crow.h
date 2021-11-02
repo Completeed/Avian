@@ -9,22 +9,8 @@
 
 #include <uint256.h>
 
-#include "sph_blake.h"
-#include "sph_bmw.h"
-#include "sph_cubehash.h"
-#include "sph_echo.h"
-#include "sph_fugue.h"
-#include "sph_groestl.h"
-#include "sph_hamsi.h"
-#include "sph_jh.h"
-#include "sph_keccak.h"
-#include "sph_luffa.h"
-#include "sph_shabal.h"
-#include "sph_shavite.h"
-#include "sph_simd.h"
-#include "sph_skein.h"
-#include "sph_whirlpool.h"
-#include "sph_sha2.h"
+#include "algo/hash_algos.h"
+
 #include "yespower/yespower.h"
 
 // Config

@@ -145,7 +145,7 @@ bool IsTransitioningToX16rt(const CBlockIndex* pindexLast, const CBlockHeader *p
 // Algorithm by Zawy, a modification of WT-144 by Tom Harding
 // For updates see
 // https://github.com/zawy12/difficulty-algorithms/issues/3#issuecomment-442129791
-unsigned int GetNextWorkRequiredLWMA(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const POW_TYPE powType) {
+unsigned int GetNextWorkRequiredLWMA(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::ConsensusParams& params, const POW_TYPE powType) {
     const bool verbose = LogAcceptCategory(BCLog::CROW);
     const arith_uint256 powLimit = UintToArith256(params.powTypeLimits[powType]);   // Max target limit (easiest diff)
     const int64_t T = params.nPowTargetSpacing * 2;                                 // Target freq
