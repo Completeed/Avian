@@ -3024,8 +3024,9 @@ bool static DisconnectTip(CValidationState& state, const CChainParams& chainpara
 // Crow: Check if Crow Algo is activated at given point
 bool IsCrowEnabled(const CBlockIndex* pindexPrev, const Consensus::ConsensusParams& params)
 {
-    LOCK(cs_main);
-    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_CROW, versionbitscache) == THRESHOLD_ACTIVE);
+    // LOCK(cs_main);
+    // return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_CROW, versionbitscache) == THRESHOLD_ACTIVE);
+    return (pindexPrev->nTime > params.powForkTime);
 }
 
 static int64_t nTimeReadFromDisk = 0;
