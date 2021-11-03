@@ -21,7 +21,7 @@ const std::string DEFAULT_POW_TYPE = "x16rt";
 // Crow: Pow type names
 const std::string POW_TYPE_NAMES[] = {
     "x16rt",
-    "crow"
+    "minotaurx"
 };
 
 // Crow: Pow type IDs
