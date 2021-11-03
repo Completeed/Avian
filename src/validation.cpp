@@ -3933,8 +3933,8 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
             if (powType >= NUM_BLOCK_TYPES)
                 return state.DoS(100, false, REJECT_INVALID, "bad-algo-id", false, "unrecognised pow type in block version");
 
-            if (block.nBits != GetNextWorkRequiredLWMA(pindexPrev, &block, consensusParams, powType))
-                return state.DoS(100, false, REJECT_INVALID, "bad-diff", false, "incorrect pow difficulty in for block type");
+            // if (block.nBits != GetNextWorkRequiredLWMA(pindexPrev, &block, consensusParams, powType))
+            //     return state.DoS(100, false, REJECT_INVALID, "bad-diff", false, "incorrect pow difficulty in for block type");
 
     } else if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)) {
         return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
@@ -3985,8 +3985,8 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
         // nothing to do
     } else {
         // Top 8 bits must be zero
-        if (block.nVersion & 0xFF000000)
-            return state.Invalid(false, REJECT_OBSOLETE, strprintf("old-versionbits(0x%08x)", block.nVersion), strprintf("rejected nVersion=0x%08x block (old versionbits)", block.nVersion));
+        // if (block.nVersion & 0xFF000000)
+        //     return state.Invalid(false, REJECT_OBSOLETE, strprintf("old-versionbits(0x%08x)", block.nVersion), strprintf("rejected nVersion=0x%08x block (old versionbits)", block.nVersion));
 
         // Blocktype must be valid
         uint8_t blockType = (block.nVersion >> 16) & 0xFF;
