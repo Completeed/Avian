@@ -174,10 +174,8 @@ unsigned int GetNextWorkRequiredLWMA(const CBlockIndex* pindexLast, const CBlock
     const CBlockIndex* blockPreviousTimestamp = pindexLast;
     while (blocksFound < N) {
         // Reached forkpoint before finding N blocks of correct powtype? Return min
-        if (blockPreviousTimestamp->GetBlockHeader().nVersion >= 0x20000000) {
-            if (verbose) LogPrintf("* GetNextWorkRequiredLWMA: Allowing %s pow limit (previousTime calc reached forkpoint at height %i)\n", POW_TYPE_NAMES[powType], blockPreviousTimestamp->nHeight);
-            return powLimit.GetCompact();
-        }
+        if (verbose) LogPrintf("* GetNextWorkRequiredLWMA: Allowing %s pow limit (previousTime calc reached forkpoint at height %i)\n", POW_TYPE_NAMES[powType], blockPreviousTimestamp->nHeight);
+        return powLimit.GetCompact();
 
         // Wrong block type? Skip
         if (blockPreviousTimestamp->GetBlockHeader().GetPoWType() != powType) {
@@ -261,7 +259,6 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
                   pindexLast->nHeight + 1, pblock->nVersion, btc, dgw, dgw - btc, (float)(dgw - btc) * 100.0 / (float)btc, pindexLast->GetBlockTime() - nPrevBlockTime);
         return btc;
     }
-
 }
 
 unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nFirstBlockTime, const Consensus::ConsensusParams& params)

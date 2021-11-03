@@ -2092,10 +2092,6 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
     LOCK(cs_main);
     int32_t nVersion = VERSIONBITS_TOP_BITS;
 
-    // Crow: Set bit 29 to 0
-    if (IsCrowEnabled(pindexPrev, params))
-        nVersion = 0;
-
     /** If the assets are deployed now. We need to use the correct block version */
     if (AreAssetsDeployed())
         nVersion = VERSIONBITS_TOP_BITS_ASSETS;
@@ -2109,6 +2105,10 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
 
     // Used for block checking/ remove after X16RV2 algo change // TODO
     nVersion |= 1 << 25;
+
+    // Crow: Set bit 29 to 0
+    if (IsCrowEnabled(pindexPrev, params))
+        nVersion = 0;
 
     return nVersion;
 }
@@ -3933,8 +3933,8 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
             if (powType >= NUM_BLOCK_TYPES)
                 return state.DoS(100, false, REJECT_INVALID, "bad-algo-id", false, "unrecognised pow type in block version");
 
-            // if (block.nBits != GetNextWorkRequiredLWMA(pindexPrev, &block, consensusParams, powType))
-            //     return state.DoS(100, false, REJECT_INVALID, "bad-diff", false, "incorrect pow difficulty in for block type");
+            if (block.nBits != GetNextWorkRequiredLWMA(pindexPrev, &block, consensusParams, powType))
+                return state.DoS(100, false, REJECT_INVALID, "bad-diff", false, "incorrect pow difficulty in for block type");
 
     } else if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)) {
         return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");

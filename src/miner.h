@@ -203,7 +203,7 @@ private:
 
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
-int64_t UpdateTime(CBlockHeader* pblock, const Consensus::ConsensusParams& consensusParams, const CBlockIndex* pindexPrev);
+int64_t UpdateTime(CBlockHeader* pblock, const Consensus::ConsensusParams& consensusParams, const CBlockIndex* pindexPrev, const POW_TYPE powType);
 
 int GenerateRavens(bool fGenerate, int nThreads, const CChainParams& chainparams);
 #endif // RAVEN_MINER_H

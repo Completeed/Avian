@@ -118,9 +118,8 @@ public:
 
     // Crow: Get pow type name
     std::string GetPoWTypeName() const {
-        if (nVersion >= 0x20000000)
-            return POW_TYPE_NAMES[0];
-
+        // if (nVersion >= 0x20000000)
+        //     return POW_TYPE_NAMES[0];
         POW_TYPE pt = GetPoWType();
         if (pt >= NUM_BLOCK_TYPES)
             return "unrecognised";

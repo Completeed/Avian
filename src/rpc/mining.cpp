@@ -138,7 +138,7 @@ UniValue getnetworkhashps(const JSONRPCRequest& request)
     return GetNetworkHashPS(!request.params[0].isNull() ? request.params[0].get_int() : 5, !request.params[1].isNull() ? request.params[1].get_int() : -1, powType);
 }
 
-UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGenerate, uint64_t nMaxTries, bool keepScript)
+UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGenerate, uint64_t nMaxTries, bool keepScript, const POW_TYPE powType)
 {
     static const int nInnerLoopCount = 0x10000;
     int nHeightEnd = 0;
@@ -153,7 +153,7 @@ UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGen
     UniValue blockHashes(UniValue::VARR);
     while (nHeight < nHeightEnd)
     {
-        std::unique_ptr<CBlockTemplate> pblocktemplate(BlockAssembler(Params()).CreateNewBlock(coinbaseScript->reserveScript));
+        std::unique_ptr<CBlockTemplate> pblocktemplate(BlockAssembler(Params()).CreateNewBlock(coinbaseScript->reserveScript, true, powType));
         if (!pblocktemplate.get())
             throw JSONRPCError(RPC_INTERNAL_ERROR, "Couldn't create new block");
         CBlock *pblock = &pblocktemplate->block;
@@ -203,6 +203,21 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
             + HelpExampleCli("generatetoaddress", "11 \"myaddress\"")
         );
 
+    std::string strAlgo = gArgs.GetArg("-powalgo", DEFAULT_POW_TYPE);
+
+    bool algoFound = false;
+    POW_TYPE powType;
+    for (unsigned int i = 0; i < NUM_BLOCK_TYPES; i++) {
+        if (strAlgo == POW_TYPE_NAMES[i]) {
+            powType = (POW_TYPE)i;
+            algoFound = true;
+            break;
+        }
+    }
+    if (!algoFound)
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid pow algorithm requested");
+
+
     int nGenerate = request.params[0].get_int();
     uint64_t nMaxTries = 1000000;
     if (!request.params[2].isNull()) {
@@ -217,7 +232,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
     std::shared_ptr<CReserveScript> coinbaseScript = std::make_shared<CReserveScript>();
     coinbaseScript->reserveScript = GetScriptForDestination(destination);
 
-    return generateBlocks(coinbaseScript, nGenerate, nMaxTries, false);
+    return generateBlocks(coinbaseScript, nGenerate, nMaxTries, false, powType);
 }
 
 UniValue getmininginfo(const JSONRPCRequest& request)
