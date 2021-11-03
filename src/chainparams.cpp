@@ -274,8 +274,8 @@ public:
 
         // Crow Algo Deployment (testnet)
         consensus.vDeployments[Consensus::DEPLOYMENT_CROW].bit = 7;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = 0;  // Nov 2, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nTimeout = 999999999999ULL;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nStartTime = -1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CROW].nTimeout = std::numeric_limits<int64_t>::max();
 
         // Crow Algo consensus
         consensus.powForkTime = 1635847608;                 // Time of PoW hash method change 
