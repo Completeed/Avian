@@ -22,7 +22,7 @@ const struct VBDeploymentInfo VersionBitsDeploymentInfo[Consensus::MAX_VERSION_B
     },
     // Crow: Deployment
     {
-        /*.name =*/ "crow",
+        /*.name =*/ "minotaurx",
         /*.gbt_force =*/ true,
     }
 };

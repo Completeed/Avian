@@ -154,6 +154,8 @@ UniValue blockheaderToJSON(const CBlockIndex* blockindex)
     result.push_back(Pair("nonce", (uint64_t)blockindex->nNonce));
     result.push_back(Pair("bits", strprintf("%08x", blockindex->nBits)));
     result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
+    if (IsCrowEnabled(blockindex, Params().GetConsensus()))
+        result.push_back(Pair("crowdifficulty", GetDifficulty(blockindex))); 
     result.push_back(Pair("chainwork", blockindex->nChainWork.GetHex()));
     result.push_back(Pair("nTx", (uint64_t)blockindex->nTx));
 
