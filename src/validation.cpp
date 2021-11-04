@@ -2093,8 +2093,10 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
     int32_t nVersion = VERSIONBITS_TOP_BITS;
 
     // Crow: Set bit 29 to 0
-    if (IsCrowEnabled(pindexPrev, params))
-        nVersion = 0;
+    if (pindexPrev != nullptr) {
+        if (IsCrowEnabled(pindexPrev, params))
+            nVersion = 0;
+    } 
 
     /** If the assets are deployed now. We need to use the correct block version */
     if (AreAssetsDeployed())
@@ -3026,7 +3028,11 @@ bool IsCrowEnabled(const CBlockIndex* pindexPrev, const Consensus::ConsensusPara
 {
     LOCK(cs_main);
     // return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_CROW, versionbitscache) == THRESHOLD_ACTIVE);
-    return (pindexPrev->nTime > params.powForkTime);
+    if (pindexPrev != nullptr) {
+        return (pindexPrev->nTime > params.powForkTime);
+    } else {
+        return false;
+    }
 }
 
 static int64_t nTimeReadFromDisk = 0;
