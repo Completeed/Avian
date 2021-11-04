@@ -2092,6 +2092,10 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
     LOCK(cs_main);
     int32_t nVersion = VERSIONBITS_TOP_BITS;
 
+    // Crow: Set bit 29 to 0
+    if (IsCrowEnabled(pindexPrev, params))
+        nVersion = 0;
+
     /** If the assets are deployed now. We need to use the correct block version */
     if (AreAssetsDeployed())
         nVersion = VERSIONBITS_TOP_BITS_ASSETS;
@@ -2105,10 +2109,6 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Cons
 
     // Used for block checking/ remove after X16RV2 algo change // TODO
     nVersion |= 1 << 25;
-
-    // Crow: Set bit 29 to 0
-    if (IsCrowEnabled(pindexPrev, params))
-        nVersion = 0;
 
     return nVersion;
 }
@@ -4040,13 +4040,13 @@ static bool ContextualCheckBlock(const CBlock& block, CValidationState& state, c
     // Enforce rule that the coinbase starts with serialized block height
     CScript expect = CScript() << nHeight;
 
-    if (consensusParams.nBIP34Enabled)
-    {
-		if (block.vtx[0]->vin[0].scriptSig.size() < expect.size() ||
-			!std::equal(expect.begin(), expect.end(), block.vtx[0]->vin[0].scriptSig.begin())) {
-			return state.DoS(100, false, REJECT_INVALID, "bad-cb-height", false, "block height mismatch in coinbase");
-		}
-    }
+    // if (consensusParams.nBIP34Enabled)
+    // {
+	// 	if (block.vtx[0]->vin[0].scriptSig.size() < expect.size() ||
+	// 		!std::equal(expect.begin(), expect.end(), block.vtx[0]->vin[0].scriptSig.begin())) {
+	// 		return state.DoS(100, false, REJECT_INVALID, "bad-cb-height", false, "block height mismatch in coinbase");
+	// 	}
+    // }
     // Validation for witness commitments.
     // * We compute the witness hash (which is the hash including witnesses) of all the block's transactions, except the
     //   coinbase (where 0x0000....0000 is used instead).

@@ -174,9 +174,11 @@ unsigned int GetNextWorkRequiredLWMA(const CBlockIndex* pindexLast, const CBlock
     const CBlockIndex* blockPreviousTimestamp = pindexLast;
     while (blocksFound < N) {
         // Reached forkpoint before finding N blocks of correct powtype? Return min
-        if (verbose) LogPrintf("* GetNextWorkRequiredLWMA: Allowing %s pow limit (previousTime calc reached forkpoint at height %i)\n", POW_TYPE_NAMES[powType], blockPreviousTimestamp->nHeight);
-        return powLimit.GetCompact();
-
+        if (blockPreviousTimestamp->GetBlockHeader().nTime > params.powForkTime) {
+            if (verbose) LogPrintf("* GetNextWorkRequiredLWMA: Allowing %s pow limit (previousTime calc reached forkpoint at height %i)\n", POW_TYPE_NAMES[powType], blockPreviousTimestamp->nHeight);
+            return powLimit.GetCompact();
+        }
+        
         // Wrong block type? Skip
         if (blockPreviousTimestamp->GetBlockHeader().GetPoWType() != powType) {
             assert (blockPreviousTimestamp->pprev);
