@@ -328,6 +328,7 @@ libraven_wallet_a_SOURCES = \
 # crypto primitives library
 crypto_libraven_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
 crypto_libraven_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_a_CFLAGS = $(PIE_FLAGS) -Wall -O2 -fomit-frame-pointer
 crypto_libraven_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
@@ -397,6 +398,10 @@ libraven_common_a_SOURCES = \
   chainparams.cpp \
   coins.cpp \
   compressor.cpp \
+  consensus/merkle.cpp \
+  consensus/merkle.h \
+  consensus/params.h \
+  consensus/validation.h \  
   core_read.cpp \
   core_write.cpp \
   key.cpp \
