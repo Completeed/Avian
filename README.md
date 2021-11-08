@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+Avian Core integration/staging tree
+=======
 RavencoinLite Core integration/staging tree
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 =====================================
 
 [![C/C++ CI](https://github.com/RavencoinLite/RavencoinLite/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/RavencoinLite/RavencoinLite/actions/workflows/c-cpp.yml)
@@ -8,6 +12,16 @@ https://ravencoinlite.info
 What is RavencoinLite?
 ----------------
 
+<<<<<<< HEAD
+Avian is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Avian uses peer-to-peer technology to operate
+with no central authority: managing transactions and issuing money are carried
+out collectively by the network. Avian Core is the name of open source
+software which enables the use of this currency.
+
+For more information, as well as an immediately useable, binary version of
+the Avian Core software, see https://avian.info
+=======
 RavencoinLite is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. RavencoinLite uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
@@ -16,19 +30,29 @@ software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
 the RavencoinLite Core software, see https://ravencoinlite.info
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 License
 -------
 
+<<<<<<< HEAD
+Avian Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+=======
 RavencoinLite Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
+<<<<<<< HEAD
+completely stable. [Tags](https://github.com/Avian/tags/Avian/tags) are created
+regularly to indicate new official, stable release versions of Avian Core.
+=======
 completely stable. [Tags](https://github.com/RavencoinLite/tags/RavencoinLite/tags) are created
 regularly to indicate new official, stable release versions of RavencoinLite Core.
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -42,13 +66,22 @@ lots of money.
 
 Testnet is now up and running and available to use during development. There is an issue when connecting to the testnet that requires the use of the -maxtipage parameter in order to connect to the test network initially. After the initial launch the -maxtipage parameter is not required.
 
+<<<<<<< HEAD
+Use this command to initially start aviand on the testnet. <code>./aviand -testnet -maxtipage=259200</code>
+=======
 Use this command to initially start ravend on the testnet. <code>./ravend -testnet -maxtipage=259200</code>
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 
 Running on Mainnet
 -------
+<<<<<<< HEAD
+Use this command to start aviand on the mainnet.
+<code>./aviand -seednode=dnsseed.avian.info</code>
+=======
 Use this command to start ravend on the mainnet.
 <code>./ravend -seednode=dnsseed.ravencoinlite.info</code>
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 ### Automated Testing
 
@@ -70,7 +103,11 @@ to add a test plan to the pull request description if testing the changes is
 not straightforward.
 
 
+<<<<<<< HEAD
+About Avian
+=======
 About RavencoinLite
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 ----------------
 A digital peer to peer network for the facilitation of asset transfer.
 
@@ -84,12 +121,20 @@ I would like to reiterate that there are no professional developers on the dev t
 
 Thank you to the Bitcoin developers.
 
+<<<<<<< HEAD
+The Avian project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project. We are eternally grateful to you for your efforts and diligence in making a secure network and for their support of free and open source software development.  The Avian experiment is made on the foundation you built.
+=======
 The RavencoinLite project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project. We are eternally grateful to you for your efforts and diligence in making a secure network and for their support of free and open source software development.  The RavencoinLite experiment is made on the foundation you built.
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 
 Abstract
 ----------------
+<<<<<<< HEAD
+Avian aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, Avian is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the number, but not weighed distribution schedule, of coins. Avian is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. Avian is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
+=======
 RavencoinLite aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, RavencoinLite is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the number, but not weighed distribution schedule, of coins. RavencoinLite is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. RavencoinLite is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 
 
@@ -99,9 +144,15 @@ The success of the Ethereum ERC 20 token shows the demand for tokenized assets t
 
 Bitcoin also has the capability of serving as the rails for tokens by using projects such as Omnilayer, RSK or Counterparty. However, neither Bitcoin nor Ethereum was specifically designed for facilitating ownership of other assets.
 
+<<<<<<< HEAD
+Avian is designed to be a use case specific blockchain designed to efficiently handle one specific function: the transfer of assets from one party to another., while providing a secure network for transactions.
+
+Bitcoin is and always should be focused on its goals of being a better form of money. Bitcoin developers will unlikely prioritize improvements or features which are specifically beneficial to the facilitation of token transfers.  One goal of the Avian project is to see if a use case specific blockchain and development effort can create code which can either improve existing structures like Bitcoin or provide advantages for specific use cases.
+=======
 RavencoinLite is designed to be a use case specific blockchain designed to efficiently handle one specific function: the transfer of assets from one party to another., while providing a secure network for transactions.
 
 Bitcoin is and always should be focused on its goals of being a better form of money. Bitcoin developers will unlikely prioritize improvements or features which are specifically beneficial to the facilitation of token transfers.  One goal of the RavencoinLite project is to see if a use case specific blockchain and development effort can create code which can either improve existing structures like Bitcoin or provide advantages for specific use cases.
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 In the new global economy, borders and jurisdictions will be less relevant as more assets are tradable and trade across borders is increasingly frictionless. In an age where people can move significant amounts of wealth instantly using Bitcoin, global consumers will likely demand the same efficiency for their securities and similar asset holdings.
 

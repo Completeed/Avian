@@ -77,11 +77,19 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
 
+<<<<<<< HEAD
+    /** AVN START */
+    addWidget(assetsPage);
+    addWidget(createAssetsPage);
+    addWidget(manageAssetsPage);
+    /** AVN END */
+=======
     /** RVL START */
     addWidget(assetsPage);
     addWidget(createAssetsPage);
     addWidget(manageAssetsPage);
     /** RVL END */
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));

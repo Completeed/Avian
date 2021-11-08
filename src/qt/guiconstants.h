@@ -1,5 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2021 The Ravencoin Lite Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -51,9 +52,15 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Ravencoin light orange */
 #define COLOR_LIGHT_ORANGE QColor("#f79433")
 /* Ravencoin dark blue */
+<<<<<<< HEAD
+#define COLOR_DARK_BLUE QColor("#3d3d3d")
+/* Ravencoin light blue */
+#define COLOR_LIGHT_BLUE QColor("#4d4d4d")
+=======
 #define COLOR_DARK_BLUE QColor("#475eaa")
 /* Ravencoin light blue */
 #define COLOR_LIGHT_BLUE QColor("#5874cf")
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 /* Ravencoin asset text */
 #define COLOR_ASSET_TEXT QColor(255, 255, 255)
 /* Ravencoin shadow color - light mode */
@@ -110,6 +117,10 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
+<<<<<<< HEAD
+/* Keep old values for compatibility (New: AVN, Old: RVL) */
+=======
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #define QAPP_ORG_NAME "Raven Lite"
 #define QAPP_ORG_DOMAIN "ravencoinlite.org"
 #define QAPP_APP_NAME_DEFAULT "RavenLite-Qt"

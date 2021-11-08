@@ -4,7 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
+<<<<<<< HEAD
+#include "config/avian-config.h"
+=======
 #include "config/ravenlite-config.h"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "base58.h"
@@ -55,10 +59,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || gArgs.IsArgSet("-?") || gArgs.IsArgSet("-h") || gArgs.IsArgSet("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = strprintf(_("%s raven-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = strprintf(_("%s avian-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  raven-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded raven transaction") + "\n" +
-              "  raven-tx [options] -create [commands]   " + _("Create hex-encoded raven transaction") + "\n" +
+              "  avian-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded raven transaction") + "\n" +
+              "  avian-tx [options] -create [commands]   " + _("Create hex-encoded raven transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());

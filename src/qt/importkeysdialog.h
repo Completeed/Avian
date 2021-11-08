@@ -3,8 +3,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+<<<<<<< HEAD
+#ifndef AVIAN_QT_IMPORTKEYS_H
+#define AVIAN_QT_IMPORTKEYS_H
+=======
 #ifndef RAVENLITE_QT_IMPORTKEYS_H
 #define RAVENLITE_QT_IMPORTKEYS_H
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 class CWallet;
 class CBlockIndex;
 
@@ -49,4 +54,8 @@ private Q_SLOTS:
     bool importKey();
 };
 
+<<<<<<< HEAD
+#endif // AVIAN_QT_IMPORTKEYS_H
+=======
 #endif // RAVENLITE_QT_IMPORTKEYS_H
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4

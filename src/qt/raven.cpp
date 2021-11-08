@@ -4,7 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
+<<<<<<< HEAD
+#include "config/avian-config.h"
+=======
 #include "config/ravenlite-config.h"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "ravengui.h"
@@ -335,7 +339,11 @@ void RavenCore::shutdown()
 }
 
 static int qt_argc = 1;
+<<<<<<< HEAD
+static const char* qt_argv = "avian-qt";
+=======
 static const char* qt_argv = "raven-qt";
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 RavenApplication::RavenApplication():
     QApplication(qt_argc, const_cast<char **>(&qt_argv)),

@@ -4,7 +4,11 @@
 # Template Google Spreadsheet at:  
 #   https://docs.google.com/spreadsheets/d/1Ym88-ggbw8yiMgVxOtVYDsCXJGNGZqlpOfgdbVK8iYU
 # In Google Sheets: File->Download As->.csv
+<<<<<<< HEAD
+# Prerequisite: aviand daemon to be running
+=======
 # Prerequisite: ravend daemon to be running
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 # In order to use metadata, you must install be running IPFS
 # Steps:
 #   1. Get IPFS - https://ipfs.io/
@@ -23,8 +27,13 @@ import json
 import hashlib
 
 
+<<<<<<< HEAD
+#Set this to your avian-cli program
+cli = "avian-cli"
+=======
 #Set this to your raven-cli program
 cli = "raven-cli"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 mode =  "-testnet"
 rpc_port = 18766

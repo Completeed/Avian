@@ -203,7 +203,15 @@
    <item>
     <widget class="QLabel" name="lblExplanation1">
      <property name="text">
+<<<<<<< Updated upstream
       <string>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in 2021 when RVL initially launched.</string>
+=======
+<<<<<<< HEAD
+      <string>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in 2021 when AVN initially launched.</string>
+=======
+      <string>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in 2021 when RVL initially launched.</string>
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
      </property>
      <property name="wordWrap">
       <bool>true</bool>

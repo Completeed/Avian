@@ -10,7 +10,11 @@
 #include <stdint.h>
 
 #if defined(BUILD_RAVEN_INTERNAL) && defined(HAVE_CONFIG_H)
+<<<<<<< HEAD
+#include "config/avian-config.h"
+=======
 #include "config/ravenlite-config.h"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
   #if defined(_WIN32)
     #if defined(DLL_EXPORT)
       #if defined(HAVE_FUNC_ATTRIBUTE_DLLEXPORT)
@@ -22,7 +26,7 @@
   #elif defined(HAVE_FUNC_ATTRIBUTE_VISIBILITY)
     #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
   #endif
-#elif defined(MSC_VER) && !defined(STATIC_LIBRAVENCONSENSUS)
+#elif defined(MSC_VER) && !defined(STATIC_LIBAVIANCONSENSUS)
   #define EXPORT_SYMBOL __declspec(dllimport)
 #endif
 

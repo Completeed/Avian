@@ -118,9 +118,15 @@ Start in $HOME
 afterword:
 ----------------------------
 
+<<<<<<< HEAD
+run GUI wallet using `src/qt/avian-qt`
+
+run aviand and avian-cli using `src/aviand` and `src/avian-cli` respectively
+=======
 run GUI wallet using `src/qt/raven-qt`
 
 run ravend and raven-cli using `src/ravend` and `src/raven-cli` respectively
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 optional:
 ----------------------------

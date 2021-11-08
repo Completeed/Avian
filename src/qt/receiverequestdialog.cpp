@@ -23,7 +23,11 @@
 #endif
 
 #if defined(HAVE_CONFIG_H)
+<<<<<<< HEAD
+#include "config/avian-config.h" /* for USE_QRCODE */
+=======
 #include "config/ravenlite-config.h" /* for USE_QRCODE */
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #ifdef USE_QRCODE

@@ -219,7 +219,15 @@ public:
             0
         };
 
+<<<<<<< Updated upstream
         /** RVL Start **/
+=======
+<<<<<<< HEAD
+        /** AVN Start **/
+=======
+        /** RVL Start **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -241,7 +249,15 @@ public:
         nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
         nMinReorganizationPeers = 4;
         nMinReorganizationAge = 60 * 60 * 12; // 12 hours
+<<<<<<< Updated upstream
         /** RVL End **/
+=======
+<<<<<<< HEAD
+        /** AVN End **/
+=======
+        /** RVL End **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
     }
 };
 
@@ -341,7 +357,15 @@ public:
             0
         };
 	    
+<<<<<<< Updated upstream
         /** RVL Start **/
+=======
+<<<<<<< HEAD
+        /** AVN Start **/
+=======
+        /** RVL Start **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -363,7 +387,15 @@ public:
         nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
         nMinReorganizationPeers = 4;
         nMinReorganizationAge = 60 * 60 * 12; // 12 hours
+<<<<<<< Updated upstream
         /** RVL End **/
+=======
+<<<<<<< HEAD
+        /** AVN End **/
+=======
+        /** RVL End **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
 
     }
 };
@@ -503,7 +535,15 @@ public:
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
 
+<<<<<<< Updated upstream
         /** RVL Start **/
+=======
+<<<<<<< HEAD
+        /** AVN Start **/
+=======
+        /** RVL Start **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -525,7 +565,15 @@ public:
         nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
         nMinReorganizationPeers = 4;
         nMinReorganizationAge = 60 * 60 * 12; // 12 hours
+<<<<<<< Updated upstream
         /** RVL End **/
+=======
+<<<<<<< HEAD
+        /** AVN End **/
+=======
+        /** RVL End **/
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
+>>>>>>> Stashed changes
     }
 };
 

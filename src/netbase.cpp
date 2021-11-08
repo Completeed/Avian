@@ -5,7 +5,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
+<<<<<<< HEAD
+#include "config/avian-config.h"
+=======
 #include "config/ravenlite-config.h"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "netbase.h"

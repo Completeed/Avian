@@ -19,6 +19,15 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
+<<<<<<< HEAD
+            VALUE "CompanyName",        "Avian"
+            VALUE "FileDescription",    PACKAGE_NAME " (GUI node for Avian)"
+            VALUE "FileVersion",        VER_FILEVERSION_STR
+            VALUE "InternalName",       "avian-qt"
+            VALUE "LegalCopyright",     COPYRIGHT_STR
+            VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
+            VALUE "OriginalFilename",   "avian-qt.exe"
+=======
             VALUE "CompanyName",        "RavencoinLite"
             VALUE "FileDescription",    PACKAGE_NAME " (GUI node for RavencoinLite)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
@@ -26,6 +35,7 @@ BEGIN
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "ravencoinlite-qt.exe"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
             VALUE "ProductName",        PACKAGE_NAME
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END

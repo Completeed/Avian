@@ -4,7 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
+<<<<<<< HEAD
+#include "config/avian-config.h"
+=======
 #include "config/ravenlite-config.h"
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "chainparams.h"
@@ -56,7 +60,11 @@ int main(int argc, char *argv[])
     SelectParams(CBaseChainParams::MAIN);
     noui_connect();
     ClearDatadirCache();
+<<<<<<< HEAD
+    fs::path pathTemp = fs::temp_directory_path() / strprintf("test_avian-qt_%lu_%i", (unsigned long) GetTime(), (int) GetRand(100000));
+=======
     fs::path pathTemp = fs::temp_directory_path() / strprintf("test_raven-qt_%lu_%i", (unsigned long) GetTime(), (int) GetRand(100000));
+>>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
     fs::create_directories(pathTemp);
     gArgs.ForceSetArg("-datadir", pathTemp.string());
 
@@ -74,7 +82,7 @@ int main(int argc, char *argv[])
     // Don't remove this, it's needed to access
     // QApplication:: and QCoreApplication:: in the tests
     QApplication app(argc, argv);
-    app.setApplicationName("Raven-Qt-test");
+    app.setApplicationName("Avian-Qt-test");
 
     SSL_library_init();
 
