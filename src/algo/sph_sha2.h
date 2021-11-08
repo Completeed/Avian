@@ -37,18 +37,8 @@
  * @author   Thomas Pornin <thomas.pornin@cryptolog.com>
  */
 
-<<<<<<< Updated upstream
-#ifndef RVL_POW_SPH_SHA2_H
-#define RVL_POW_SPH_SHA2_H
-=======
-<<<<<<< HEAD
 #ifndef AVN_POW_SPH_SHA2_H
 #define AVN_POW_SPH_SHA2_H
-=======
-#ifndef RVL_POW_SPH_SHA2_H
-#define RVL_POW_SPH_SHA2_H
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
->>>>>>> Stashed changes
 
 #include <stddef.h>
 #include "sph_types.h"
@@ -385,12 +375,4 @@ void sph_sha512_comp(const sph_u64 msg[16], sph_u64 val[8]);
 #ifdef __cplusplus
 }
 #endif
-<<<<<<< Updated upstream
-#endif // RVL_POW_SPH_SHA2_H
-=======
-<<<<<<< HEAD
 #endif // AVN_POW_SPH_SHA2_H
-=======
-#endif // RVL_POW_SPH_SHA2_H
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
->>>>>>> Stashed changes

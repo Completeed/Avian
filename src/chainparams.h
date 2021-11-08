@@ -129,15 +129,8 @@ protected:
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
 
-<<<<<<< Updated upstream
-    /** RVL Start **/
-=======
-<<<<<<< HEAD
     /** AVN Start **/
-=======
-    /** RVL Start **/
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
->>>>>>> Stashed changes
+
     // Burn Amounts
     CAmount nIssueAssetBurnAmount;
     CAmount nReissueAssetBurnAmount;
@@ -159,15 +152,7 @@ protected:
     int nMaxReorganizationDepth;
     int nMinReorganizationPeers;
     int nMinReorganizationAge;
-<<<<<<< Updated upstream
-    /** RVL End **/
-=======
-<<<<<<< HEAD
     /** AVN End **/
-=======
-    /** RVL End **/
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
->>>>>>> Stashed changes
 };
 
 /**
