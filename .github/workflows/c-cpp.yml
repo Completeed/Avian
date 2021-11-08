@@ -133,16 +133,11 @@ jobs:
           
       - name: Strip built binaries
         run: |
-<<<<<<< HEAD
           ${{ matrix.strip-cmd }} depends/${{ matrix.host }}/bin/aviand* src/qt/avian-qt* src/avian-cli* dist/Avian-Qt.app* || ( echo "Failed stripping builds. The build will have a bigger file size" )
-=======
-          ${{ matrix.strip-cmd }} depends/${{ matrix.host }}/bin/ravend* src/qt/raven-qt* src/raven-cli* dist/RavencoinLite-Qt.app* || ( echo "Failed stripping builds. The build will have a bigger file size" )
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-<<<<<<< HEAD
           name: avian-${{ github.sha }}-${{ matrix.name }}
           path: |
             depends/${{ matrix.host }}/bin/aviand*
@@ -151,13 +146,3 @@ jobs:
             src/avian-cli
             src/avian-cli.exe
             dist/Avian-Qt.app
-=======
-          name: ravencoinlite-${{ github.sha }}-${{ matrix.name }}
-          path: |
-            depends/${{ matrix.host }}/bin/ravend*
-            src/qt/raven-qt
-            src/qt/raven-qt.exe
-            src/raven-cli
-            src/raven-cli.exe
-            dist/RavencoinLite-Qt.app
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
