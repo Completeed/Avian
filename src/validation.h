@@ -12,7 +12,7 @@
 #endif
 
 
-de "amount.h"
+#include "amount.h"
 #include "coins.h"
 #include "fs.h"
 #include "protocol.h" // For CMessageHeader::MessageStartChars
