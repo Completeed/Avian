@@ -80,17 +80,10 @@ class RavenTestFramework():
         parser.add_option("--nocleanup", dest="nocleanup", default=False, action="store_true",
                           help="Leave aviands and test.* datadir on exit or error")
         parser.add_option("--noshutdown", dest="noshutdown", default=False, action="store_true",
-<<<<<<< HEAD
                           help="Don't stop aviands after the test execution")
         parser.add_option("--srcdir", dest="srcdir",
                           default=os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../../../src"),
                           help="Source directory containing aviand/avian-cli (default: %default)")
-=======
-                          help="Don't stop ravends after the test execution")
-        parser.add_option("--srcdir", dest="srcdir",
-                          default=os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../../../src"),
-                          help="Source directory containing ravend/raven-cli (default: %default)")
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
         parser.add_option("--cachedir", dest="cachedir",
                           default=os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../../cache"),
                           help="Directory for caching pregenerated datadirs")
@@ -158,11 +151,7 @@ class RavenTestFramework():
         else:
             for node in self.nodes:
                 node.cleanup_on_exit = False
-<<<<<<< HEAD
             self.log.info("Note: aviands were not stopped and may still be running")
-=======
-            self.log.info("Note: ravends were not stopped and may still be running")
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
         if not self.options.nocleanup and not self.options.noshutdown and success != TestStatus.FAILED:
             self.log.info("Cleaning up")
@@ -369,11 +358,7 @@ class RavenTestFramework():
         # User can provide log level as a number or string (eg DEBUG). loglevel was caught as a string, so try to convert it to an int
         ll = int(self.options.loglevel) if self.options.loglevel.isdigit() else self.options.loglevel.upper()
         ch.setLevel(ll)
-<<<<<<< HEAD
         # Format logs the same as aviand's debug.log with microprecision (so log files can be concatenated and sorted)
-=======
-        # Format logs the same as ravend's debug.log with microprecision (so log files can be concatenated and sorted)
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
         formatter = logging.Formatter(fmt='%(asctime)s.%(msecs)03d000 %(name)s (%(levelname)s): %(message)s',
                                       datefmt='%Y-%m-%d %H:%M:%S')
         formatter.converter = time.gmtime

@@ -94,11 +94,7 @@
                  </font>
                 </property>
                 <property name="text">
-<<<<<<< HEAD
                  <string>AVN Balances</string>
-=======
-                 <string>RVL Balances</string>
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
                 </property>
                </widget>
               </item>

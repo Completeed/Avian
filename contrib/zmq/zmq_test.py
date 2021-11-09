@@ -8,11 +8,7 @@
     ZMQ example using python3's asyncio
 
     Raven should be started with the command line arguments:
-<<<<<<< HEAD
         aviand -testnet -daemon \
-=======
-        ravend -testnet -daemon \
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
                 -zmqpubhashblock=tcp://127.0.0.1:28766 \
                 -zmqpubrawtx=tcp://127.0.0.1:28766 \
                 -zmqpubhashtx=tcp://127.0.0.1:28766 \

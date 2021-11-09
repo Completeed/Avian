@@ -7,11 +7,7 @@
 #define RAVEN_QT_RAVENGUI_H
 
 #if defined(HAVE_CONFIG_H)
-<<<<<<< HEAD
 #include "config/avian-config.h"
-=======
-#include "config/ravenlite-config.h"
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "amount.h"
@@ -121,11 +117,7 @@ private:
     QAction *openAction;
     QAction *showHelpMessageAction;
 
-<<<<<<< HEAD
     /** AVN START */
-=======
-    /** RVL START */
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
     QAction *transferAssetAction;
     QAction *createAssetAction;
     QAction *manageAssetAction;
@@ -137,11 +129,7 @@ private:
     QTimer *pricingTimer;
     QNetworkAccessManager* networkManager;
     QNetworkRequest* request;
-<<<<<<< HEAD
     /** AVN END */
-=======
-    /** RVL END */
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;

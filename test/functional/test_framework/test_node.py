@@ -66,11 +66,7 @@ class TestNode():
         self.cleanup_on_exit = True # Whether to kill the node when this object goes away
 
     def __del__(self):
-<<<<<<< HEAD
         # Ensure that we don't leave any aviand processes lying around after
-=======
-        # Ensure that we don't leave any ravend processes lying around after
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
         # the test ends
         if self.process and self.cleanup_on_exit:
             # Should only happen on test failure

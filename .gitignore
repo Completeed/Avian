@@ -10,11 +10,7 @@ src/avian-tx
 src/test/test_raven
 src/test/test_raven_fuzzy
 src/test/test_raven_hash
-<<<<<<< HEAD
 src/qt/test/test_avian-qt
-=======
-src/qt/test/test_raven-qt
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 .vscode
 output.txt
 
@@ -39,11 +35,6 @@ config.log
 config.status
 configure
 libtool
-<<<<<<< HEAD
-=======
-src/config/ravenlite-config.h
-src/config/ravenlite-config.h.in
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist

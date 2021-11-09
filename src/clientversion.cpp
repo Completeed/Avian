@@ -14,11 +14,7 @@
  * for both aviand and avian-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-<<<<<<< HEAD
 const std::string CLIENT_NAME("Avian");
-=======
-const std::string CLIENT_NAME("RavencoinLite");
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 /**
  * Client version number

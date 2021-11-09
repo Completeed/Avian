@@ -69,21 +69,12 @@ if BUILD_AVIAND
   bin_PROGRAMS += aviand
 endif
 
-<<<<<<< HEAD
 if BUILD_AVIAN_CLI
   bin_PROGRAMS += avian-cli
 endif
 
 if BUILD_AVIAN_TX
   bin_PROGRAMS += avian-tx
-=======
-if BUILD_RAVEN_CLI
-  bin_PROGRAMS += raven-cli
-endif
-
-if BUILD_RAVEN_TX
-  bin_PROGRAMS += raven-tx
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 endif
 
 .PHONY: FORCE check-symbols check-security
@@ -445,11 +436,7 @@ libavian_util_a_SOURCES = \
   $(RAVEN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-<<<<<<< HEAD
 libavian_util_a_SOURCES += compat/glibc_compat.cpp
-=======
-libraven_util_a_SOURCES += compat/glibc_compat.cpp
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
@@ -571,21 +558,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-<<<<<<< HEAD
 config/avian-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
 config/stamp-h1: $(top_srcdir)/$(subdir)/config/avian-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
 $(top_srcdir)/$(subdir)/config/avian-config.h.in:  $(am__configure_deps)
 	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/avian-config.h.in
-=======
-config/ravenlite-config.h: config/stamp-h1
-	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/ravenlite-config.h.in $(top_builddir)/config.status
-	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/ravenlite-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/ravenlite-config.h.in
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

@@ -22,11 +22,7 @@ AVIAND_BIN=$(top_builddir)/src/$(RAVEN_DAEMON_NAME)$(EXEEXT)
 RAVEN_QT_BIN=$(top_builddir)/src/qt/$(RAVEN_GUI_NAME)$(EXEEXT)
 AVIAN_CLI_BIN=$(top_builddir)/src/$(AVIAN_CLI_NAME)$(EXEEXT)
 RAVEN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
-<<<<<<< HEAD
 AVIAN_CLI_INSTALL=$(top_builddir)/contrib/install_cli.sh
-=======
-RAVEN_CLI_INSTALL=$(top_builddir)/contrib/install_cli.sh
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 empty :=
 space := $(empty) $(empty)
@@ -101,7 +97,6 @@ $(OSX_APP)/Contents/Resources/raven.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-<<<<<<< HEAD
 $(OSX_APP)/Contents/MacOS/install_cli.sh: $(AVIAN_CLI_INSTALL)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
@@ -115,13 +110,6 @@ $(OSX_APP)/Contents/MacOS/aviand: $(AVIAND_BIN)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
 $(OSX_APP)/Contents/MacOS/avian-cli: $(AVIAN_CLI_BIN)
-=======
-$(OSX_APP)/Contents/MacOS/install_cli.sh: $(RAVEN_CLI_INSTALL)
-	$(MKDIR_P) $(@D)
-	$(INSTALL_DATA) $< $@
-
-$(OSX_APP)/Contents/MacOS/Raven-Qt: $(RAVEN_QT_BIN)
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
@@ -139,13 +127,8 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
   $(OSX_APP)/Contents/Resources/raven.icns $(OSX_APP)/Contents/Info.plist \
-<<<<<<< HEAD
   $(OSX_APP)/Contents/MacOS/Avian-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings \
   $(OSX_APP)/Contents/MacOS/aviand $(OSX_APP)/Contents/MacOS/avian-cli $(OSX_APP)/Contents/MacOS/install_cli.sh
-=======
-  $(OSX_APP)/Contents/MacOS/Raven-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings \
-  $(OSX_APP)/Contents/MacOS/ravend $(OSX_APP)/Contents/MacOS/raven-cli $(OSX_APP)/Contents/MacOS/install_cli.sh
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 osx_volname:
 	echo $(OSX_VOLNAME) >$@

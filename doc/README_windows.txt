@@ -11,11 +11,7 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-<<<<<<< HEAD
 Unpack the files into a directory and run avian-qt.exe.
-=======
-Unpack the files into a directory and run raven-qt.exe.
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 Raven Core is the original Raven client and it builds the backbone of the network.
 However, it downloads and stores the entire history of Raven transactions;

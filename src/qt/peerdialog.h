@@ -3,13 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-<<<<<<< HEAD
 #ifndef AVIAN_QT_PEERDIALOG_H
 #define AVIAN_QT_PEERDIALOG_H
-=======
-#ifndef RAVENLITE_QT_PEERDIALOG_H
-#define RAVENLITE_QT_PEERDIALOG_H
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 #include <QObject>
 #include <QWidget>

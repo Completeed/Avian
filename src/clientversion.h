@@ -7,20 +7,12 @@
 #define AVIAN_CLIENTVERSION_H
 
 #if defined(HAVE_CONFIG_H)
-<<<<<<< HEAD
 #include "config/avian-config.h"
-=======
-#include "config/ravenlite-config.h"
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif //HAVE_CONFIG_H
 
 // Check that required client information is defined
 #if !defined(CLIENT_VERSION_MAJOR) || !defined(CLIENT_VERSION_MINOR) || !defined(CLIENT_VERSION_REVISION) || !defined(CLIENT_VERSION_BUILD) || !defined(CLIENT_VERSION_IS_RELEASE) || !defined(COPYRIGHT_YEAR)
-<<<<<<< HEAD
 #error Client version information missing: version is not defined by avian-config.h or in any other way
-=======
-#error Client version information missing: version is not defined by ravenlite-config.h or in any other way
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 /**

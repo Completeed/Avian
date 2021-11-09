@@ -199,11 +199,7 @@ Version 0.15 introduces several new RPC methods:
   in the chain (See [PR 9733](https://github.com/RavenProject/Ravencoin/pull/9733)).
 - `listwallets` lists wallets which are currently loaded. See the *Multi-wallet* section
   of these release notes for full details (See [Multi-wallet support](#multi-wallet-support)).
-<<<<<<< HEAD
 - `uptime` returns the total runtime of the `aviand` server since its last start (See [PR 10400](https://github.com/RavenProject/Ravencoin/pull/10400)).
-=======
-- `uptime` returns the total runtime of the `ravend` server since its last start (See [PR 10400](https://github.com/RavenProject/Ravencoin/pull/10400)).
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
 Low-level RPC changes
 ---------------------

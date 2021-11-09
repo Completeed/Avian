@@ -138,11 +138,7 @@ BASE_SCRIPTS= [
     'rpc_preciousblock.py',
     'feature_notifications.py',
     'rpc_net.py',
-<<<<<<< HEAD
     'interface_avian_cli.py',
-=======
-    'interface_raven_cli.py',
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
     'mempool_resurrect.py',
     'rpc_signrawtransaction.py',
     'wallet_resendtransactions.py',
@@ -231,11 +227,7 @@ def main():
 
     enable_wallet = config["components"].getboolean("ENABLE_WALLET")
     enable_cli = config["components"].getboolean("ENABLE_UTILS")
-<<<<<<< HEAD
     enable_aviand = config["components"].getboolean("ENABLE_AVIAND")
-=======
-    enable_ravend = config["components"].getboolean("ENABLE_RAVEND")
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
     if config["environment"]["EXEEXT"] == ".exe" and not args.force:
         # https://github.com/RavenProject/Ravencoin/commit/d52802551752140cf41f0d9a225a43e84404d3e9
@@ -243,13 +235,8 @@ def main():
         print("Tests currently disabled on Windows by default. Use --force option to enable")
         sys.exit(0)
 
-<<<<<<< HEAD
     if not (enable_wallet and enable_cli and enable_aviand):
         print("No functional tests to run. Wallet, utils, and aviand must all be enabled")
-=======
-    if not (enable_wallet and enable_cli and enable_ravend):
-        print("No functional tests to run. Wallet, utils, and ravend must all be enabled")
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
         print("Rerun `configure` with --enable-wallet, --with-cli and --with-daemon and rerun make")
         sys.exit(0)
 
@@ -305,11 +292,7 @@ def main():
 
 
 def run_tests(test_list, src_dir, build_dir, exeext, tmpdir, jobs=1, enable_coverage=False, args=[], combined_logs_len=0):
-<<<<<<< HEAD
     # Warn if aviand is already running (unix only)
-=======
-    # Warn if ravend is already running (unix only)
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
     try:
         if subprocess.check_output(["pidof", "aviand"]) is not None:
             print("%sWARNING!%s There is already a aviand process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))

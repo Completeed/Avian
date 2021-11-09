@@ -1,19 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
-<<<<<<< HEAD:contrib/debian/raven-qt.desktop
 Name=Avian Core
-=======
-Name=Ravencoinlite Core
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4:contrib/debian/bitcoin-qt.desktop
 Comment=Connect to the Raven P2P Network
 Comment[de]=Verbinde mit dem Raven peer-to-peer Netzwerk
 Comment[fr]=Raven, monnaie virtuelle cryptographique pair à pair
 Comment[tr]=Raven, eşten eşe kriptografik sanal para birimi
-<<<<<<< HEAD:contrib/debian/raven-qt.desktop
 Exec=avian-qt %u
-=======
-Exec=ravencoinlite-qt %u
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4:contrib/debian/bitcoin-qt.desktop
 Terminal=false
 Type=Application
 Icon=raven128

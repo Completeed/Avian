@@ -5,11 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-<<<<<<< HEAD
 #include "config/avian-config.h"
-=======
-#include "config/ravenlite-config.h"
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 #endif
 
 #include "utilitydialog.h"
@@ -401,13 +397,8 @@ void PaperWalletDialog::on_printButton_clicked()
     while (true) {
         bool ok;
 
-<<<<<<< HEAD
         // Ask for an amount to send to each paper wallet. It might be better to try to use the AvianAmountField, but this works fine.
         double amountInput = QInputDialog::getDouble(this, tr("Load Paper Wallets"), tr("The paper wallet printing process has begun.<br/>Please wait for the wallets to print completely and verify that everything printed correctly.<br/>Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.<br/>Now, enter the number of AVN you wish to send to each wallet:"), 0, 0, 2147483647, 8, &ok);
-=======
-        // Ask for an amount to send to each paper wallet. It might be better to try to use the RavenLiteAmountField, but this works fine.
-        double amountInput = QInputDialog::getDouble(this, tr("Load Paper Wallets"), tr("The paper wallet printing process has begun.<br/>Please wait for the wallets to print completely and verify that everything printed correctly.<br/>Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.<br/>Now, enter the number of RVL you wish to send to each wallet:"), 0, 0, 2147483647, 8, &ok);
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 
         if (!ok) {
             return;

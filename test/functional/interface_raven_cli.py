@@ -16,11 +16,7 @@ class TestRavenCli(RavenTestFramework):
     def run_test(self):
         """Main test logic"""
 
-<<<<<<< HEAD:test/functional/interface_raven_cli.py
         self.log.info("Compare responses from getinfo RPC and `avian-cli getinfo`")
-=======
-        self.log.info("Compare responses from getinfo RPC and `raven-cli getinfo`")
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4:test/functional/raven_cli.py
         cli_get_info = self.nodes[0].cli.getinfo()
         rpc_get_info = self.nodes[0].getinfo()
 

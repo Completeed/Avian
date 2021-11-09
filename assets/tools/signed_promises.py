@@ -23,11 +23,7 @@ import json
 import hashlib
 
 
-<<<<<<< HEAD
 cli = "avian-cli"
-=======
-cli = "raven-cli"
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 mode =  "-testnet"
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'

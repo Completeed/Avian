@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 Source: avian
-=======
-Source: ravencoinlite
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 Section: utils
 Priority: optional
 Maintainer: Matt Corallo <matt@mattcorallo.com>
@@ -34,11 +30,7 @@ Homepage: https://ravencoin.org/
 Vcs-Git: git://github.com/RavenProject/Ravencoin.git
 Vcs-Browser: https://github.com/RavenProject/Ravencoin
 
-<<<<<<< HEAD
 Package: aviand
-=======
-Package: ravencoinlited
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
@@ -51,11 +43,7 @@ Description: peer-to-peer network based digital currency - daemon
  This package provides the daemon, aviand, and the CLI tool
  avian-cli to interact with the daemon.
 
-<<<<<<< HEAD
 Package: avian-qt
-=======
-Package: ravencoinlite-qt
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
@@ -67,11 +55,7 @@ Description: peer-to-peer network based digital currency - Qt GUI
  .
  This package provides Avian-Qt, a GUI for Raven based on Qt.
 
-<<<<<<< HEAD
 Package: avian-tx
-=======
-Package: ravencoinlite-tx
->>>>>>> 5c221fd42c641eee3fbeae37afdd33a8d39efec4
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
