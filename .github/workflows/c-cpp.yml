@@ -110,7 +110,7 @@ jobs:
           cache-name: depends
         with:
           path: ./depends/built
-          key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('depends/packages/*') }}
+          key: ${{ matrix.name }}-${{ env.cache-name }}-cache-${{ hashFiles('depends/packages/*') }}
 
       - name: Build depends
         run: |
